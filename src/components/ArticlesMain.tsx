@@ -18,7 +18,7 @@ export const ArticlesMain: React.FC<Props> = ({ contents }) => {
         <ul className={style.articlesMainList}>
           {contents.map((content) => (
             <li className={style.articlesMainItem} key={content.id}>
-              <Link href={content.id} className={style.articlesMainItemLink}>
+              <Link href={`/articles/${content.id}`} className={style.articlesMainItemLink}>
                 <Image
                   src={content.image.url}
                   alt={content.title}

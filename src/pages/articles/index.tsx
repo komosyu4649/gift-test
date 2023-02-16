@@ -1,4 +1,4 @@
-import { getMicroCMSData } from '@/lib/microcms/getData'
+import { getMicroCMSDataList } from '@/lib/microcms/getData'
 import { MicrocmsArticlesData } from '@/types/microcms'
 import { GetStaticProps, NextPage } from 'next'
 import style from '@/styles/Article.module.scss'
@@ -13,7 +13,7 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const id: number = Number(params?.id)
-  const microcmsArticlesData = await getMicroCMSData('articles', (id - 1) * PER_PAGE, PER_PAGE)
+  const microcmsArticlesData = await getMicroCMSDataList('articles', (id - 1) * PER_PAGE, PER_PAGE)
   const { contents, totalCount } = microcmsArticlesData
   return {
     props: {
