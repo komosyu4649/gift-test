@@ -13,14 +13,16 @@ type Props = {
 
 export const getStaticPaths = async () => {
   const microcmsArticlesData = await getMicroCMSDataList('articles')
-  // console.log(microcmsArticlesData)
   const { contents } = microcmsArticlesData
   const paths = contents.map((content) => `/articles/${content.id}`)
   return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const id: string | string[] | undefined = params?.id
+  if (typeof params?.id !== 'string') {
+    throw new Error()
+  }
+  const id: string = params?.id
   const microcmsArticlesData = await getMicroCMSData('articles', id)
   return {
     props: {
