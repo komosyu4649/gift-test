@@ -2,7 +2,7 @@ import { getMicroCMSDataList } from '@/lib/microcms/getData'
 import { MicrocmsArticlesData } from '@/types/microcms'
 import { GetStaticProps, NextPage } from 'next'
 import style from '@/styles/Article.module.scss'
-import { PER_PAGE } from '@/constants'
+import { MICROCMS_ENDPOINT_ARTICLES, PER_PAGE } from '@/constants'
 import { Pagination } from '@/components/Pagination'
 import { ArticlesMain } from '@/components/ArticlesMain'
 
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export const getStaticPaths = async () => {
-  const microcmsArticlesData = await getMicroCMSDataList('articles')
+  const microcmsArticlesData = await getMicroCMSDataList(MICROCMS_ENDPOINT_ARTICLES)
   const { totalCount } = microcmsArticlesData
 
   const range = (start: number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i)
@@ -23,7 +23,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const id: number = Number(params?.id)
-  const microcmsArticlesData = await getMicroCMSDataList('articles', (id - 1) * PER_PAGE, PER_PAGE)
+  const microcmsArticlesData = await getMicroCMSDataList(
+    MICROCMS_ENDPOINT_ARTICLES,
+    (id - 1) * PER_PAGE,
+    PER_PAGE,
+  )
   const { contents, totalCount } = microcmsArticlesData
   return {
     props: {

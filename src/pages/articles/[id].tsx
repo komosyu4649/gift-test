@@ -6,13 +6,14 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import style from '@/styles/ArticlePost.module.scss'
 import titleStyle from '@/styles/Title.module.scss'
+import { MICROCMS_ENDPOINT_ARTICLES } from '@/constants'
 
 type Props = {
   content: MicrocmsArticlesData
 }
 
 export const getStaticPaths = async () => {
-  const microcmsArticlesData = await getMicroCMSDataList('articles')
+  const microcmsArticlesData = await getMicroCMSDataList(MICROCMS_ENDPOINT_ARTICLES)
   const { contents } = microcmsArticlesData
   const paths = contents.map((content) => `/articles/${content.id}`)
   return { paths, fallback: false }
@@ -23,7 +24,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     throw new Error()
   }
   const id: string = params?.id
-  const microcmsArticlesData = await getMicroCMSData('articles', id)
+  const microcmsArticlesData = await getMicroCMSData(MICROCMS_ENDPOINT_ARTICLES, id)
   return {
     props: {
       content: microcmsArticlesData,
