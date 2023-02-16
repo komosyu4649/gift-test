@@ -7,6 +7,7 @@ import React from 'react'
 import style from '@/styles/Article.module.scss'
 import titleStyle from '@/styles/Title.module.scss'
 import imageStyle from '@/styles/Image.module.scss'
+import { formatDate } from '@/lib/dayjs'
 
 type Props = {
   microcmsArticlesContents: Pick<
@@ -49,7 +50,7 @@ const Articles: NextPage<Props> = ({ microcmsArticlesContents }) => {
                     </p>
                     <div className={style.articlesMainItemContentTime}>
                       <time className={style.articlesMainItemContentTimeInside}>
-                        {content.publishedAt}
+                        {formatDate(content.publishedAt)}
                       </time>
                       <span className={style.articlesMainItemContentTimeSub}>（公開日時）</span>
                     </div>
