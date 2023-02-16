@@ -5,6 +5,7 @@ import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import style from '@/styles/ArticlePost.module.scss'
+import titleStyle from '@/styles/Title.module.scss'
 
 type Props = {
   content: MicrocmsArticlesData
@@ -44,8 +45,15 @@ const ArticlePost: NextPage<Props> = ({ content }) => {
             className={style.articleHeaderThumbnail}
           />
           <div className={style.articleHeaderContent}>
-            <h1 className={style.articleHeaderContentTitle}>{content.title}</h1>
-            <time className={style.articleHeaderContenTime}>{formatDate(content.publishedAt)}</time>
+            <h1 className={`${titleStyle.default} ${style.articleHeaderContentTitle}`}>
+              {content.title}
+            </h1>
+            <div className={style.articleHeaderContenTime}>
+              <time className={style.articleHeaderContenTimeInside}>
+                {formatDate(content.publishedAt)}
+              </time>
+              <span className={style.articleHeaderContenTimeSub}>（公開日時）</span>
+            </div>
           </div>
         </div>
         <div className={style.articleBody} dangerouslySetInnerHTML={{ __html: content.body }}></div>
