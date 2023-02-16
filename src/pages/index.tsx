@@ -2,8 +2,20 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import { GetStaticProps } from 'next'
+import { getMicroCMSData } from '@/lib/microcms/getData'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const getStaticProps: GetStaticProps = async() => {
+  const microcmsData = await getMicroCMSData("articles")
+  const microcmsDataContents = microcmsData.contents
+  return {
+    props: {
+      microcmsDataContents
+    }
+  }
+}
 
 export default function Home() {
   return (
