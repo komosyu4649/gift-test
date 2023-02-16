@@ -1,4 +1,5 @@
 @use 'reset.scss';
+@use 'variable.scss' as var;
 
 :root {
   --color-black: #000000;
@@ -26,4 +27,13 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@media screen and (max-width: var.$break-point-sp) {
+  html {
+    // font-size: 2.4155vw;
+    // font-size: 2.45099vw;
+    // font-size: 2.56415vw;
+    font-size: 2.6667vw;
+  }
 }

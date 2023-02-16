@@ -16,7 +16,6 @@ export const getStaticPaths = async () => {
   // console.log(microcmsArticlesData)
   const { contents } = microcmsArticlesData
   const paths = contents.map((content) => `/articles/${content.id}`)
-  console.log(paths)
   return { paths, fallback: false }
 }
 

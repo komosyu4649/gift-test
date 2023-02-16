@@ -1,3 +1,5 @@
+@use './variable.scss' as var;
+
 .main {
   width: 76.8rem;
   margin: 0 auto 8rem;
@@ -55,4 +57,19 @@
   color: var(--color-white);
   background-color: var(--color-black);
   border-radius: 0.6rem;
+}
+
+@media screen and (max-width: var.$break-point-sp) {
+  .main {
+    width: 33rem;
+  }
+  .article {
+    margin-top: 5rem;
+  }
+  .articleHeaderThumbnail {
+    height: 20rem;
+  }
+  .articleBackButton {
+    margin: 4rem auto 0;
+  }
 }

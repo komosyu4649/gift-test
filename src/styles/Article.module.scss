@@ -1,3 +1,5 @@
+@use './variable.scss' as var;
+
 .main {
   width: 108.8rem;
   margin: 0 auto 45.4rem;
@@ -34,4 +36,21 @@
 .articlesMainItemContentTime {
   margin-top: 0.8rem;
   color: var(--color-gray);
+}
+
+@media screen and (max-width: var.$break-point-sp) {
+  .main {
+    width: 33rem;
+    margin: 0 auto 12rem;
+  }
+  .articles {
+    margin: 5rem auto 5.5rem;
+  }
+  .articlesTitle {
+    margin-bottom: 3rem;
+  }
+  .articlesMainList {
+    grid-template-columns: auto;
+    gap: 4.5rem;
+  }
 }
