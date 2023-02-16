@@ -1,0 +1,56 @@
+@use './variable.scss' as var;
+
+.main {
+  width: 108.8rem;
+  margin: 0 auto 45.4rem;
+}
+.articles {
+  margin: 6.4rem 0 9.6rem;
+}
+.articlesTitle {
+  margin-bottom: 6.4rem;
+  text-align: center;
+}
+.articlesMainList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6.4rem;
+}
+.articlesMainItemImage {
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 2rem;
+  object-fit: cover;
+}
+.articlesMainItemContentTitle {
+  margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  line-height: 1.2rem;
+  font-weight: var(--fontWeight-default);
+}
+.articlesMainItemContentDescription {
+  font-size: 1.2rem;
+  line-height: 1.333;
+  color: var(--color-gray);
+}
+.articlesMainItemContentTime {
+  margin-top: 0.8rem;
+  color: var(--color-gray);
+}
+
+@media screen and (max-width: var.$break-point-sp) {
+  .main {
+    width: 33rem;
+    margin: 0 auto 12rem;
+  }
+  .articles {
+    margin: 5rem auto 5.5rem;
+  }
+  .articlesTitle {
+    margin-bottom: 3rem;
+  }
+  .articlesMainList {
+    grid-template-columns: auto;
+    gap: 4.5rem;
+  }
+}

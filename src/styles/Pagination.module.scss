@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4rem;
+}
+.list {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.item {
+  font-size: 1.2rem;
+}
+.itemLink {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 3.2rem;
+  height: 4.8rem;
+  color: var(--color-white);
+  background-color: var(--color-black);
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-black);
+}
+.itemLink.current {
+  color: var(--color-black);
+  background-color: var(--color-white);
+  pointer-events: none;
+  path {
+    stroke: var(--color-black);
+  }
+}
+.itemDott {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
