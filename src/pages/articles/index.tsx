@@ -40,7 +40,7 @@ const Articles: NextPage<Props> = ({ microcmsArticlesContents }) => {
                     alt={content.title}
                     height={content.image.height}
                     width={content.image.width}
-                    className={`${imageStyle.default} ${style.articlesMainItemImage}`}
+                    className={style.articlesMainItemImage}
                   />
                   <div className={style.articlesMainItemContent}>
                     <h2 className={style.articlesMainItemContentTitle}>{content.title}</h2>

@@ -15,11 +15,15 @@
   gap: 6.4rem;
 }
 .articlesMainItemImage {
+  width: 100%;
   height: 20rem;
   margin-bottom: 2rem;
+  object-fit: cover;
 }
 .articlesMainItemContentTitle {
   margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  line-height: 1.2rem;
   font-weight: var(--fontWeight-default);
 }
 .articlesMainItemContentDescription {
@@ -29,7 +33,5 @@
 }
 .articlesMainItemContentTime {
   margin-top: 0.8rem;
-}
-.articlesMainItemContentTime {
   color: var(--color-gray);
 }
