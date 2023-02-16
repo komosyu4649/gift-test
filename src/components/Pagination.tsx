@@ -50,58 +50,56 @@ export const Pagination: React.FC<Props> = ({ totalCount, pageName }) => {
 
   return (
     <>
-      {allPageNumber > 1 &&
-        (console.log(pageNumber),
-        (
-          <nav className={style.container}>
-            <Link
-              href={`/${pageName}/page/${pageNumber - 1}`}
-              className={`${style.prev} ${style.itemLink} ${pageNumber === 1 && style.current}`}
+      {allPageNumber > 1 && (
+        <nav className={style.container}>
+          <Link
+            href={`/${pageName}/page/${pageNumber - 1}`}
+            className={`${style.prev} ${style.itemLink} ${pageNumber === 1 && style.current}`}
+          >
+            <svg
+              width='8'
+              height='14'
+              viewBox='0 0 8 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <svg
-                width='8'
-                height='14'
-                viewBox='0 0 8 14'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path d='M7 1L1 7L7 13' stroke='white' />
-              </svg>
-            </Link>
-            <ul className={style.list}>
-              {paginationGenerator(pageNumber, allPageNumber).map((page: number, index: number) => (
-                <li key={index} className={style.item}>
-                  {typeof page === 'number' ? (
-                    <Link
-                      href={`/articles/page/${page}`}
-                      className={`${style.itemLink} ${page === pageNumber && style.current}`}
-                    >
-                      {page}
-                    </Link>
-                  ) : (
-                    <span className={style.itemDott}>{page}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={`/${pageName}/${pageNumber + 1}`}
-              className={`${style.prev} ${style.itemLink} ${
-                pageNumber === allPageNumber && style.current
-              }`}
+              <path d='M7 1L1 7L7 13' stroke='white' />
+            </svg>
+          </Link>
+          <ul className={style.list}>
+            {paginationGenerator(pageNumber, allPageNumber).map((page: number, index: number) => (
+              <li key={index} className={style.item}>
+                {typeof page === 'number' ? (
+                  <Link
+                    href={`/articles/page/${page}`}
+                    className={`${style.itemLink} ${page === pageNumber && style.current}`}
+                  >
+                    {page}
+                  </Link>
+                ) : (
+                  <span className={style.itemDott}>{page}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <Link
+            href={`/${pageName}/${pageNumber + 1}`}
+            className={`${style.prev} ${style.itemLink} ${
+              pageNumber === allPageNumber && style.current
+            }`}
+          >
+            <svg
+              width='8'
+              height='14'
+              viewBox='0 0 8 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <svg
-                width='8'
-                height='14'
-                viewBox='0 0 8 14'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path d='M1 13L7 7L0.999999 1' stroke='white' />
-              </svg>
-            </Link>
-          </nav>
-        ))}
+              <path d='M1 13L7 7L0.999999 1' stroke='white' />
+            </svg>
+          </Link>
+        </nav>
+      )}
     </>
   )
 }

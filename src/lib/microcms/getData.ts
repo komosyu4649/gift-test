@@ -10,8 +10,8 @@ export const getMicroCMSData = async (endpointName: string, contentId: string) =
 
 export const getMicroCMSDataList = async (
   endpointName: string,
-  offsetNumber?: number,
-  limitNumber?: number,
+  offsetNumber: number = 0,
+  limitNumber: number = 100,
 ) => {
   const res = await client.getList({
     endpoint: endpointName,
