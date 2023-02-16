@@ -1,0 +1,35 @@
+.main {
+  width: 108.8rem;
+  margin: 0 auto;
+}
+.articles {
+  margin-top: 6.4rem;
+}
+.articlesTitle {
+  margin-bottom: 6.4rem;
+  text-align: center;
+}
+.articlesMainList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6.4rem;
+}
+.articlesMainItemImage {
+  height: 20rem;
+  margin-bottom: 2rem;
+}
+.articlesMainItemContentTitle {
+  margin-bottom: 1.6rem;
+  font-weight: var(--fontWeight-default);
+}
+.articlesMainItemContentDescription {
+  font-size: 1.2rem;
+  line-height: 1.333;
+  color: var(--color-gray);
+}
+.articlesMainItemContentTime {
+  margin-top: 0.8rem;
+}
+.articlesMainItemContentTime {
+  color: var(--color-gray);
+}

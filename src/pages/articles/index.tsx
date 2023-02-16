@@ -4,7 +4,9 @@ import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import style from './page.module.scss'
+import style from '@/styles/Article.module.scss'
+import titleStyle from '@/styles/Title.module.scss'
+import imageStyle from '@/styles/Image.module.scss'
 
 type Props = {
   microcmsArticlesContents: Pick<
@@ -25,27 +27,31 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const Articles: NextPage<Props> = ({ microcmsArticlesContents }) => {
   return (
-    <main>
-      <section className={style.container}>
-        <h1 className={style.title}>記事一覧</h1>
-        <div className={style.main}>
-          <ul className={style.mainList}>
+    <main className={style.main}>
+      <section className={style.articles}>
+        <h1 className={`${titleStyle.default} ${style.articlesTitle}`}>記事一覧</h1>
+        <div className={style.articlesMain}>
+          <ul className={style.articlesMainList}>
             {microcmsArticlesContents.map((content) => (
-              <li className={style.mainItem} key={content.id}>
-                <Link href={content.id} className={style.mainItemLink}>
+              <li className={style.articlesMainItem} key={content.id}>
+                <Link href={content.id} className={style.articlesMainItemLink}>
                   <Image
                     src={content.image.url}
                     alt={content.title}
                     height={content.image.height}
                     width={content.image.width}
-                    className={style.mainItemImage}
+                    className={`${imageStyle.default} ${style.articlesMainItemImage}`}
                   />
-                  <div className={style.mainItemContent}>
-                    <h2 className={style.mainItemContentTitle}>{content.title}</h2>
-                    <p className={style.mainItemContentDescription}>{content.description}</p>
-                    <div className={style.mainItemContentTime}>
-                      <time className={style.mainItemContentTimeInside}>{content.publishedAt}</time>
-                      <span className={style.mainItemContentTimeSub}>（公開日時）</span>
+                  <div className={style.articlesMainItemContent}>
+                    <h2 className={style.articlesMainItemContentTitle}>{content.title}</h2>
+                    <p className={style.articlesMainItemContentDescription}>
+                      {content.description}
+                    </p>
+                    <div className={style.articlesMainItemContentTime}>
+                      <time className={style.articlesMainItemContentTimeInside}>
+                        {content.publishedAt}
+                      </time>
+                      <span className={style.articlesMainItemContentTimeSub}>（公開日時）</span>
                     </div>
                   </div>
                 </Link>
