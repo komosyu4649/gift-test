@@ -9,12 +9,11 @@ import titleStyle from '@/styles/Title.module.scss'
 import imageStyle from '@/styles/Image.module.scss'
 import { formatDate } from '@/lib/dayjs'
 import { PER_PAGE } from '@/constants'
+import { Pagination } from '@/components/Pagination'
 
 type Props = {
-  microcmsArticlesContents: Pick<
-    MicrocmsArticlesData,
-    'id' | 'image' | 'title' | 'description' | 'publishedAt'
-  >[]
+  contents: Pick<MicrocmsArticlesData, 'id' | 'image' | 'title' | 'description' | 'publishedAt'>[]
+  totalCount: number
 }
 
 export const getStaticPaths = async () => {
@@ -31,22 +30,23 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const id: number = Number(params?.id)
   const microcmsArticlesData = await getMicroCMSData('articles', (id - 1) * PER_PAGE, PER_PAGE)
-  const microcmsArticlesContents = microcmsArticlesData.contents
+  const { contents, totalCount } = microcmsArticlesData
   return {
     props: {
-      microcmsArticlesContents,
+      contents,
+      totalCount,
     },
   }
 }
 
-const Articles: NextPage<Props> = ({ microcmsArticlesContents }) => {
+const Articles: NextPage<Props> = ({ contents, totalCount }) => {
   return (
     <main className={style.main}>
       <section className={style.articles}>
         <h1 className={`${titleStyle.default} ${style.articlesTitle}`}>記事一覧</h1>
         <div className={style.articlesMain}>
           <ul className={style.articlesMainList}>
-            {microcmsArticlesContents.map((content) => (
+            {contents.map((content) => (
               <li className={style.articlesMainItem} key={content.id}>
                 <Link href={content.id} className={style.articlesMainItemLink}>
                   <Image
@@ -74,6 +74,7 @@ const Articles: NextPage<Props> = ({ microcmsArticlesContents }) => {
           </ul>
         </div>
       </section>
+      <Pagination totalCount={totalCount} pageName='articles' />
     </main>
   )
 }
